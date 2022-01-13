@@ -8,50 +8,71 @@
     <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <div class="row">
-        <tr>
-            <td>td1</td>
-            <td>td2</td>
-            <td>td3</td>
-            <td>td4</td>
-            <td>td5</td>
-        </tr>
-        <tr>
-            <td>td1</td>
-            <td>td2</td>
-            <td>td3</td>
-            <td>td4</td>
-            <td>td5</td>
-        </tr>
-        <tr>
-            <td>td1</td>
-            <td>td2</td>
-            <td>td3</td>
-            <td>td4</td>
-            <td>td5</td>
-        </tr>
-        <tr>
-            <td>td1</td>
-            <td>td2</td>
-            <td>td3</td>
-            <td>td4</td>
-            <td>td5</td>
-        </tr>
-        <tr>
-            <td>td1</td>
-            <td>td2</td>
-            <td>td3</td>
-            <td>td4</td>
-            <td>td5</td>
-        </tr>
+        <table class="table table-bordered">
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+                <td>td3</td>
+                <td>td4</td>
+                <td>td5</td>
+            </tr>
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+                <td>td3</td>
+                <td>td4</td>
+                <td>td5</td>
+            </tr>
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+                <td>td3</td>
+                <td>td4</td>
+                <td>td5</td>
+            </tr>
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+                <td>td3</td>
+                <td>td4</td>
+                <td>td5</td>
+            </tr>
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+                <td>td3</td>
+                <td>td4</td>
+                <td>td5</td>
+            </tr>
+        </table>
     </div>
-  </div>
+</div>
+
+<!-- <div class="wrap">
+    <h1>h1</h1>
+    <h2>h2</h2>
+</div> -->
     
-    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
     <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
     <script>
-     
+    // Basic filter : v 3.4.0之後建議不要再使用
+     $('td:eq(0)').css('background-color','#aaa')
+     // 由後往前選，用負的
+     $('td:eq(-3)').css('background-color','#aaa') 
+     // 偶數個
+     $('td:even').css('color','red');
+     // 基數個
+     $('td:odd').css('font-size','1.5rem');
+     // 最後一個
+     $('td:last').css('font-weight','800');
+     // 大於index(5)
+     // 從td:gt(5)出發，少於index(4)，疊加filter用:相接
+     $('td:gt(5):lt(4)').css('background-color', 'green');
+    //  $('.wrap:header').css('color','blue');
 
 
     
