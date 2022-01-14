@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>child-filter</title>
+    <style>
+        body{
+            font-size: 0.5rem;
+        }
+        .wrap {
+          width: 500px;
+          height: 200px;
+          background-color: rgb(235, 209, 161);
+          display: flex;
+          flex-wrap: wrap;
+          /* align-content: ; */
+        }
+  
+        .box {
+          width: 50px;
+          height: 50px;
+          outline: 1px solid rgb(0, 0, 0);
+        }
+      </style>
+</head>
+<body>
+    <div class="wrap">
+        <p>p1</p>
+        <div class="box">box1</div>
+        <div class="box">box2</div>
+        <p>p2</p>
+        <div class="box">box3</div>
+        <div class="box">box4</div>
+        <p>p3</p>
+        <div class="box">box5</div>
+        <div class="box">box6</div>
+        <div class="box">box7</div>
+        <div class="box">box8</div>
+        <p>p4</p>
+        <div class="box">box9</div>
+        <div class="box">box10</div>
+        <div class="box">box11</div>
+        <div class="box">box12</div>
+      </div>
+
+    <div class="wrap">
+        <div class="box">box13</div>
+    </div>
+
+    <div class="wrap">
+        <div class="box">box14</div>
+        <div class="box">box15</div>
+        <p>hello</p>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+
+    // 既是box，自身位置又是長子  ans.box14
+    $('.box:first-child').css('background-color','#a5a58d');
+
+    // 既是box，自身位置又是最後一個  ans.box12
+    $('.box:last-child').css('background','#6d6875');
+
+    // 既是p，自身位置又是同類第一個  ans.p1
+    $('p:first-of-type').css('color','#00b4d8');
+
+    // 既是p，自身位置又是同類最後一個 ans.p4 hello
+    $('p:last-of-type').css('color','#00b4d8');
+    
+    // :nth-child CSS從1開始，不同於陣列由0開始
+    // 既是box，自身位置又是長子  ans.box13 box14
+    $('.box:nth-child(1)').css('color','#9d0208');
+
+    // 既是box，自身位置又是第三個小孩  ans. box2
+    $('.box:nth-child(3)').css('color','red');
+
+    // 既是box，自身位置又是同類第五個  ans. box5
+    $('.box:nth-of-type(5)').css('color','red');
+
+    // 既是div，自身位置又是第一個小孩 ans. wrap
+    // $('div:nth-child(1)').css('background','green');
+
+    // 既是div，自身位置又是第二個小孩 ans. box1
+    // $('div:nth-child(2)').css('background','blue');
+
+    // 既是div，自身位置又是唯一  ans. box13
+    $('div:only-child').css('background','#eddcd2');
+    // 既是p，自身位置又是同類唯一  ans. hello
+    $('p:only-of-type').css('font-size','1.5rem');
+
+
+    </script>
+</body>
+</html>
