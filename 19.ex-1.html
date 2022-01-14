@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-1</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Checkbox</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>Elon Musk</td>
+                            <td>0912345678</td>
+                            <td>ElonMuck@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>Mark Zuckerberg</td>
+                            <td>0912345678</td>
+                            <td>MarkZuckerberg@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>Bill Gates</td>
+                            <td>0912345678</td>
+                            <td>BillGates@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>Larry Page</td>
+                            <td>0912345678</td>
+                            <td>LarryPage@gmail.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+     $('input').change(function(){
+        //  console.log('this:',$(this));
+        if($(this).prop('checked')){
+            $(this).closest('tr').css('background','lightblue');
+        }else{
+            $(this).closest('tr').css('background','none');
+        }
+     })
+     
+    </script>
+</body>
+</html>

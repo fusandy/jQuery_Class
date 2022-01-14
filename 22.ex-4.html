@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-4</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <!-- <form action="">
+        <input type="text" value="123">
+    </form> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                
+                <form>
+                    <div class="form-group">
+                        <label for="username">username</label>
+                        <input type="username" class="form-control" id="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1" id="checkbox">Show Password</label>
+                    </div>
+                    <button type="button" class="btn btn-primary auto-input">Auto Input</button>
+                    <button type="button" class="btn btn-primary submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+        $('.auto-input').click(function(){
+            $('input[id=username]').val('John');
+            $('input[id=email]').val('John@test.com');
+            $('input[id=password]').val('12345');
+        })
+        $('#checkbox').click(function(){
+            let result = document.querySelector('#password');
+            if(result.type === "password"){
+                result.type = "text";
+            }else{
+                result.type = "password";
+            }
+        })
+        
+    // 修改input的value，jQuery: val = value
+    //  $('input').val('666');
+    // 取得input的值
+    //  console.log('input value:', $('input').val())
+    </script>
+</body>
+</html>

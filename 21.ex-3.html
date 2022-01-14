@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-3</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .container{
+        display: flex;
+        margin-top: 20px;
+    }
+    .box{
+        margin: 0 10px;
+    }
+    .img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: 0.2s;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="img">
+                <img src="./imgs/winne.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="img">
+                <img src="./imgs/tigger.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="img">
+                <img src="./imgs/piglet.png" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="img">
+                <img src="./imgs/eeyore.png" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="img">
+                <img src="./imgs/rabbit.png" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+     $('.img').change(function(){
+         console.log('this:', $(this));
+         $(this).css('outline','5px solid #ddbea9')
+         .css('box-shadow','5px 5px 10px gray');
+     })
+
+    //  TODO: 點擊其他的圖片，原圖片的外框會消失
+
+</script>
+</body>
+</html>

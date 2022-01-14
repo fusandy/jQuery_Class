@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <button class="btn btn-dark">Click</button>
+    <input type="checkbox">
+    <h1>Hello World</h1>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+    //  $('.btn').click(function(){
+    //      console.log('success');
+    //      $('h1').css('color','#9d0208');
+    //  });
+
+    //  $('input').click(function(){
+    //     $('h1').css('color','black');
+    //  });
+
+    $('.btn').click(function(){
+        console.log('click');
+    })
+    
+    // $('.btn').dblclick(function(){
+    //     console.log('dblclick');
+    // })
+    
+    $('.btn').mousedown(function(){
+        console.log('mousedown');
+    })
+    
+    $('.btn').mouseup(function(){
+        console.log('mouseup');
+    })
+
+    $('.btn').mouseenter(function(){
+        console.log('mouseenter');
+        $('h1').css('color','red');
+    })
+
+    $('.btn').mouseleave(function(){
+        console.log('mouseleave');
+        $('h1').css('color','black');
+    })
+
+    // hover 進+出
+    // $('.btn').hover(function(){
+    //     console.log('enter');
+    //     $('h1').css('color','red');
+    // },function(){
+    //     console.log('out');
+    //     $('h1').css('color','black');
+    // })
+    </script>
+</body>
+</html>
