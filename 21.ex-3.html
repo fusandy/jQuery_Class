@@ -10,10 +10,11 @@
 <style>
     .container{
         display: flex;
+        flex-wrap: wrap;
         margin-top: 20px;
     }
     .box{
-        margin: 0 10px;
+        margin: 10px 10px;
     }
     .img{
         width: 200px;
@@ -60,10 +61,14 @@
     <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
 
     <script>
-     $('.img').change(function(){
+     $('.img').click(function(){
          console.log('this:', $(this));
-         $(this).css('outline','5px solid #ddbea9')
-         .css('box-shadow','5px 5px 10px gray');
+         $(this)
+         .css('outline','5px solid #ddbea9')
+         .css('box-shadow','5px 5px 10px gray')
+        //  .parent().siblings()
+        //  .css('outline','none')
+        //  .css('box-shadow','none');
      })
 
     //  TODO: 點擊其他的圖片，原圖片的外框會消失

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-6 select form</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <select name="city" id="city">
+                            <option value="0">基隆</option>
+                            <option value="1">台北</option>
+                            <option value="2">新北</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="district" id="district">
+                            <option value="0">七堵區</option>
+                            <option value="1">中正區</option>
+                            <option value="2">暖暖區</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+    // 拿文字 .text() <-> JS 的 innerText
+    // 拿value .val() <-> JS 的 value
+    // 拿html .html() <-> JS 的 innerHTML
+
+    let districtArray = [
+       ['七堵', '中正', '暖暖'],
+       ['中正', '大安', '信義'],
+       ['蘆洲', '三重', '新店'],
+    ];
+
+    // city改變的時候就執行，重複的做
+    // 寫法一
+    $('#city').change(function(){
+        // console.log('city value', $('#city').val());
+        // console.log('district data:', districtArray[$('#city').val()][0]);
+        // if ($('#city').val() == 0){
+        //     $('#district option').eq(0).text('七堵');
+        //     $('#district option').eq(1).text('中正');
+        //     $('#district option').eq(2).text('暖暖');
+        // }
+        // if ($('#city').val() == 1){
+        //     $('#district option').eq(0).text('中正');
+        //     $('#district option').eq(1).text('大安');
+        //     $('#district option').eq(2).text('信義');
+        // }
+        // if ($('#city').val() == 2){
+        //     $('#district option').eq(0).text('蘆洲');
+        //     $('#district option').eq(1).text('三重');
+        //     $('#district option').eq(2).text('新店');
+        // }
+
+        // $('#district option').eq(0).text(districtArray[$('#city').val()][0] + '區');
+        // $('#district option').eq(1).text(districtArray[$('#city').val()][1] + '區');
+        // $('#district option').eq(2).text(districtArray[$('#city').val()][2] + '區');
+    });    
+    
+
+    // 寫法二 jq Foreach (index,value與原生JS相反)
+    $('#city').change(function(){
+    //     $('#district option').each(function(index,value){
+    //         console.log('index', index);
+    //         console.log('value', $(value));
+    //         $('#district option').eq(index).text(districtArray[$('#city').val()][index] + '區');
+    //     });
+    });
+    
+    
+    // 寫法三 for loop
+    const district = document.querySelector('#district');
+
+    $('#city').change(function(){
+        // console.log(districtArray[$('#city').val()]);
+        let str = '';
+        for(let i=0; i<districtArray.length; i++){
+            str += `<option value="${i}">${districtArray[$('#city').val()][i]}區</option>`
+        };
+        console.log(str);
+        district.innerHTML = str;
+        // district變數是原生JS物件，就要用原生語法innerHTML
+        // $(district).html(str);
+        // JQ也可以選取JS物件
+        // $('#district').html(str);
+        // JQ也可以重新select
+    });
+    
+    
+
+
+
+
+
+
+
+
+
+
+    // const city = document.querySelector('#city').value;
+    // if (city == 0){
+    //     districtArray.forEach(function(value){
+    //         console.log(districtArray[city]);
+    //         // const district = '';
+    //         // district = districtArray[city].slice(',');
+
+    //     })
+    // }
+    
+
+
+    </script>
+</body>
+</html>

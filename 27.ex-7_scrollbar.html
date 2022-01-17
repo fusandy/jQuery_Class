@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+</head>
+    <style>
+        body {
+            margin: 0;
+            height: 300vh;
+        }
+        .wrap {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+        }
+        .box{
+            height: 50px;
+            width: 5%;
+            /* 動態調整width的百分比 */
+            background-color: pink;
+        }
+    </style>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        $(window).scroll(function(){
+            // console.log('scrollTop', $(window).scrollTop());
+            // console.log('scrollLeft', $(window).scrollLeft());
+            // console.log('window width', $(window).width());
+            // console.log('window height', $(window).height());
+            // console.log('body width', $('body').height());
+            // console.log('body height', $('body').height());
+            console.log('滑動百分比',($(window).scrollTop()/($('body').height()-$(window).height())*100)+'%');
+
+            $('.box').css('width',($(window).scrollTop()/($('body').height()-$(window).height())*100)+'%');
+            
+            // scrollTop偵測捲軸位置
+            // 一進入網頁，可視範圍就已經是一個window的height 
+            // 實際scroll的高度 body height - window height
+        })
+         
+    </script>
+    
+</body>
+</html>

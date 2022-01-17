@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carousel</title>
+    <title>ex-5 carousel</title>
     <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
 </head>
 <style>
     .wrap{
-        max-width: 600px;
-        height: 400px;
+        max-width: 800px;
+        height: 500px;
         overflow: hidden;
         margin: 20px auto;
         position: relative;
     }
+    /* 火車頭 */
     ul.img-wrap{
         display: flex;
-        width: 3000px;
+        width: 4000px;
         transition: 0.5s;
+        transform: translateX(0px);
     }
+    /* 圖片與wrap一樣大 */
     li img{
         width: 100%;
         height: 100%;
@@ -41,10 +44,8 @@
         margin: 0 5px;
         border-radius: 2px;        
     }
-
 </style>
 <body>
-
     <div class="wrap">
         <ul class="list-unstyled img-wrap">
             <li><img src="./imgs/slide1.jpg" alt=""></li>
@@ -65,13 +66,44 @@
     <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
 
     <script>
-        $('.slider-dots li').click(function(){
-            console.log('this:', $(this));
-            $(this).css('background','rgba(255, 255, 255, 0.836)');
+        // when? who? what?
 
+        $('.slider-dots li').click(function(){
+            console.log('this:', $(this).index());
+            $(this)
+            .css('background','rgba(255, 255, 255, 0.836)')
+            .siblings()
+            // li的同層其他li元素
+            .css('background','transparent');
+
+            // if($(this).index() === 0){
+            // $('.img-wrap').css('transform','translateX(0px)');
+            // }
+
+            // if($(this).index() === 1){
+            //     $('.img-wrap').css('transform','translateX(-800px)');
+            // }
+
+            // if($(this).index() === 2){
+            //     $('.img-wrap').css('transform','translateX(-1600px)');
+            // }
+
+            // if($(this).index() === 3){
+            //     $('.img-wrap').css('transform','translateX(-2400px)');
+            // }
+
+            // if($(this).index() === 4){
+            //     $('.img-wrap').css('transform','translateX(-3200px)');
+            // }
             
-        })
-        // nth-child : slider-dots的li index要對到li img的index
+
+            // 上述五個if判斷式用一個變數公式，即可簡化程式碼
+            // 若要在字串中插入${變數}，字串要改用backtick
+            const moveX = $(this).index() * -800;
+            $('ul.img-wrap').css('transform',`translateX(${moveX}px)`);
+
+        
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>on-1</title>
+</head>
+<body>
+    <button>click</button>
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+    $('button').on('click',function(){
+        console.log('btn clicked');
+        const newitem = `<li>item 3</li>`
+        $('ul').append(newitem);
+    })
+
+    // 偵聽li，會偵聽不到動態產生的元素
+    // $('li').on('click', function(){
+    //     console.log('li clicked', $(this).text());
+    // })
+    
+    // 動態產生時的綁定事件
+    $('ul').on('click', 'li', function(){
+        console.log('li clicked', $(this).text());
+    })
+
+    </script>
+</body>
+</html>

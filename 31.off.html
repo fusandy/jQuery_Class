@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>off</title>
+</head>
+<body>
+    <button id="hi">Hi</button>
+    <button id="on">On</button>
+    <button id="off">Off</button>
+    
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+
+    function sayHi(){
+        console.log('hi');
+    }
+
+    // 也可以宣告變數function
+    // const sayHi2 = function(){
+    //     console.log('hi');
+    // }
+    
+
+    // 以下寫法會造成On按幾下就綁定幾次Hi，重複綁定
+    // $('#on').on(
+    //     {
+    //         click:function(){
+    //             console.log('turn on sayHi function');
+    //             $('#hi').click(sayHi);
+    //         }
+    //     }
+    // )
+
+    // 因此在#on設定one，限制只能執行一次
+    $('#on').one('click', function(){
+        console.log('turn on sayHi function');
+        $('#hi').click(sayHi);
+    });
+
+    $('#off').click(function(){
+        console.log('turn off sayHi function');
+        $('#hi').off('click',sayHi);
+    })
+
+    </script>
+</body>
+</html>
