@@ -13,12 +13,10 @@
         flex-wrap: wrap;
         margin-top: 20px;
     }
-    .box{
-        margin: 10px 10px;
-    }
     .img{
         width: 200px;
         height: 200px;
+        margin: 10px 10px;
         border-radius: 50%;
         overflow: hidden;
         transition: 0.2s;
@@ -31,30 +29,20 @@
 </style>
 <body>
     <div class="container">
-        <div class="box">
-            <div class="img">
-                <img src="./imgs/winne.jpg" alt="">
-            </div>
+        <div class="img">
+            <img src="./imgs/winne.jpg" alt="">
         </div>
-        <div class="box">
-            <div class="img">
-                <img src="./imgs/tigger.jpg" alt="">
-            </div>
+        <div class="img">
+            <img src="./imgs/tigger.jpg" alt="">
         </div>
-        <div class="box">
-            <div class="img">
-                <img src="./imgs/piglet.png" alt="">
-            </div>
+        <div class="img">
+            <img src="./imgs/piglet.png" alt="">
         </div>
-        <div class="box">
-            <div class="img">
-                <img src="./imgs/eeyore.png" alt="">
-            </div>
+        <div class="img">
+            <img src="./imgs/eeyore.png" alt="">
         </div>
-        <div class="box">
-            <div class="img">
-                <img src="./imgs/rabbit.png" alt="">
-            </div>
+        <div class="img">
+            <img src="./imgs/rabbit.png" alt="">
         </div>
     </div>
     <script src="./js/jquery-3.6.0.js"></script>
@@ -66,12 +54,10 @@
          $(this)
          .css('outline','5px solid #ddbea9')
          .css('box-shadow','5px 5px 10px gray')
-        //  .parent().siblings()
-        //  .css('outline','none')
-        //  .css('box-shadow','none');
+         .siblings()
+         .css('outline','none')
+         .css('box-shadow','none');
      })
-
-    //  TODO: 點擊其他的圖片，原圖片的外框會消失
 
 </script>
 </body>

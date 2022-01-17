@@ -66,39 +66,45 @@
         //     $('#district option').eq(1).text('三重');
         //     $('#district option').eq(2).text('新店');
         // }
-
-        // $('#district option').eq(0).text(districtArray[$('#city').val()][0] + '區');
-        // $('#district option').eq(1).text(districtArray[$('#city').val()][1] + '區');
-        // $('#district option').eq(2).text(districtArray[$('#city').val()][2] + '區');
     });    
     
 
-    // 寫法二 jq Foreach (index,value與原生JS相反)
+    // 寫法二
     $('#city').change(function(){
-    //     $('#district option').each(function(index,value){
-    //         console.log('index', index);
-    //         console.log('value', $(value));
-    //         $('#district option').eq(index).text(districtArray[$('#city').val()][index] + '區');
-    //     });
+        // $('#district option').eq(0).text(districtArray[$('#city').val()][0] + '區');
+        // $('#district option').eq(1).text(districtArray[$('#city').val()][1] + '區');
+        // $('#district option').eq(2).text(districtArray[$('#city').val()][2] + '區');
+    });
+
+    // 寫法三 jq Foreach (index,value與原生JS相反)
+    $('#city').change(function(){
+        // $('#district option').each(function(index,value){
+        //     console.log('index', index);
+        //     console.log('value', $(value));
+        //     $('#district option').eq(index).text(districtArray[$('#city').val()][index] + '區');
+        // });
     });
     
     
-    // 寫法三 for loop
+    // 寫法四 for loop
     const district = document.querySelector('#district');
 
     $('#city').change(function(){
-        // console.log(districtArray[$('#city').val()]);
+        console.log(districtArray[$('#city').val()]);
         let str = '';
         for(let i=0; i<districtArray.length; i++){
             str += `<option value="${i}">${districtArray[$('#city').val()][i]}區</option>`
         };
         console.log(str);
         district.innerHTML = str;
-        // district變數是原生JS物件，就要用原生語法innerHTML
+        // district變數是原生JS物件，得用原生語法innerHTML
+        
+        // 或是: JQ也可以選取JS物件
         // $(district).html(str);
-        // JQ也可以選取JS物件
+        
+        // 或是: JQ也可以重新select
         // $('#district').html(str);
-        // JQ也可以重新select
+        
     });
     
     
