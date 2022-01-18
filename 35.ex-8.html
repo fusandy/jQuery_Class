@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-8</title>
+    <link rel="stylesheet" href="./fontawesome/css/all.css">
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+    <style>
+        .wrap{
+            width: 800px;
+            height: 400px;
+            background: #eee;
+            position: relative;
+            margin: 0 auto;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: lightskyblue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <!-- 按鈕製作邏輯 : 橫著一排一排做 上鍵 -> 左右鍵 -> 下鍵 -->
+    <div class="text-center">
+        <div>
+            <button id="btnUp" class="btn btn-dark mt-3"><i class="fas fa-chevron-up"></i></button>
+        </div>
+        <div>
+            <button id="btnLeft" class="btn btn-dark mx-3"><i class="fas fa-chevron-left"></i></button>
+            <button id="btnRight" class="btn btn-dark mx-3"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div>
+            <button id="btnDown" class="btn btn-dark"><i class="fas fa-chevron-down"></i></button>
+        </div>
+    </div>
+
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+    // 按鍵操作方框
+    // $('#btnLeft').click(function(){
+    //     if (parseInt($('.box').css('left')) === 0){
+    //         $('.box').css('left','-=0');
+    //     } else {
+    //         $('.box').css('left','-=50');
+    //     }
+    // })
+
+    // $('#btnUp').click(function(){
+    //     if(parseInt($('.box').css('top')) === 0){
+    //         $('.box').css('top','-=0');
+    //     } else {
+    //         $('.box').css('top','-=50');
+    //     }
+    // })
+
+    // $('#btnRight').click(function(){
+    //     if (parseInt($('.box').css('left')) === 700){
+    //         $('.box').css('left','+=0');
+    //     } else {
+    //         $('.box').css('left','+=50');
+    //     }    
+    // })
+
+    // $('#btnDown').click(function(){
+    //     if(parseInt($('.box').css('top')) === 300){
+    //         $('.box').css('top','+=0');
+    //     } else {
+    //         $('.box').css('top','+=50');
+    //     }
+    // })
+
+    // 鍵盤操作方框
+    // 先判斷鍵盤方向鍵的event代碼
+    $(document).on('keydown',function(){
+        console.log('event.which:', event.which);
+    })
+    // left 37 ; top 38 ; right 39 ; down 40
+    
+    // 改寫用鍵盤操控方框
+    // 不要拿字串相比大小 -> parseInt轉數字再比大小
+    $(document).on('keydown', function(){
+        if(event.which === 39){
+            if(parseInt($('.box').css('left')) === 700){
+                $('.box').css('left','+=0');
+            }else{
+                $('.box').css('left','+=50');
+            }
+            console.log('right:', parseInt($('.box').css('left')))
+        }
+
+        if(event.which === 40){
+            if(parseInt($('.box').css('top')) === 300){
+                $('.box').css('top','+=0');
+            }else{
+                $('.box').css('top','+=50');
+            }
+            console.log('down:', parseInt($('.box').css('top')))
+        }
+
+        if(event.which === 37){
+            if(parseInt($('.box').css('left')) === 0){
+                $('.box').css('left','-=0');
+            }else{
+                $('.box').css('left','-=50');
+            }
+            console.log('left:', parseInt($('.box').css('left')))
+        }
+
+        if(event.which === 38){
+            if(parseInt($('.box').css('top')) === 0){
+                $('.box').css('top','-=0');
+            }else{
+                $('.box').css('top','-=50');
+            }
+            console.log('up:', parseInt($('.box').css('top')))
+        }
+    })
+
+    </script>
+</body>
+</html>

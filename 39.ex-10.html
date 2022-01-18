@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-10 change color</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .color-demo-area{
+        height: 400px;
+        background: gray;
+    }
+    .color-select-area{
+        padding: 10px;
+        height: 400px;
+        background: #eee;
+    }
+    .color-circle{
+        width: 60px;
+        height: 60px;
+        margin: 0 5px;
+        border-radius: 50%;
+        text-align: center;
+    }
+    .color-circle:nth-child(1) {
+      background-color: lightskyblue;
+    }
+
+    .color-circle:nth-child(2) {
+      background-color: lightsalmon;
+    } 
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="color-demo-area"></div>
+            </div>
+            <div class="col-6">
+                <div class="color-select-area d-flex flex-wrap">
+                    <!-- <div class="color-circle mx-1 my-1"></div>
+                    <div class="color-circle mx-1 my-1"></div> -->
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-light" id="reset">reset</button>
+        <button class="btn btn-light" id="clear">clear</button>
+        <button class="btn btn-light" id="add">add</button>
+        <button class="btn btn-light" id="delete">delete</button>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+    //  $('.color-circle:nth-child(1)').click(function(){
+    //      $('.color-demo-area').css('background','lightskyblue');
+    //  })
+    //  $('.color-circle:nth-child(2)').click(function(){
+    //      $('.color-demo-area').css('background','lightsalmon');
+    //  })
+
+    for(i=0; i<16; i++){
+        const circle = document.createElement('div');
+        circle.className='color-circle';
+        circle.style.background=`hsl(${Math.random()*360},60%,80%)`;
+        $('.color-select-area').append(circle);
+    }
+
+    $('.color-select-area').on('click','.color-circle', function(){
+        // console.log($(this).index());
+        const index = $(this).index() + 1;
+        // console.log(index);
+        const color = $(`.color-circle:nth-child(${index})`).css('background');
+        // console.log(color);
+        $('.color-demo-area').css('background',`${color}`);
+        // const color = $(`.color-circle:nth-child(${(this).index()})`).css('background');
+        
+    })
+
+    $('#reset').click(function(){
+        location.href = '39.ex-10.html';
+    })
+
+    $('#clear').click(function(){
+        $('.color-demo-area').css('background','gray');
+    })
+
+    $('#add').click(function(){
+        const circle = document.createElement('div');
+        circle.className='color-circle';
+        circle.style.background=`hsl(${Math.random()*360},60%,80%)`;
+        $('.color-select-area').append(circle);
+    })
+
+    $('#delete').click(function(){
+        $('.color-circle:last-of-type').remove();
+    })
+    </script>
+</body>
+</html>

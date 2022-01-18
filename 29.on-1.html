@@ -15,8 +15,12 @@
 
     <script src="./js/jquery-3.6.0.js"></script>
     <script>
+
+    // .on() 第一種類 : DOM是後來動態財產生的
     $('button').on('click',function(){
         console.log('btn clicked');
+
+        // 字串賦值給變數，在DOM新增元素
         const newitem = `<li>item 3</li>`
         $('ul').append(newitem);
     })
@@ -26,7 +30,7 @@
     //     console.log('li clicked', $(this).text());
     // })
     
-    // 動態產生時的綁定事件
+    // 動態產生時的綁定事件，偵聽父層
     $('ul').on('click', 'li', function(){
         console.log('li clicked', $(this).text());
     })

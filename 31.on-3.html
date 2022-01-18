@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>on-2</title>
+    <title>on-3</title>
     <style>
         .box {
             width: 200px;
@@ -14,24 +14,17 @@
     </style>
 </head>
 <body>
-    <h1 id="showAction"></h1>
     <div class="box">box</div>
-    
+
     <script src="./js/jquery-3.6.0.js"></script>
     <script>
-    $('.box').on(
-        {
-            mouseenter: function(){
-                $('#showAction').text('Mouse Enter');
-            },
-            click: function(){
-                $('#showAction').text('Mouse Click');
-            },
-            dblclick: function(){
-                $('#showAction').text('Mouse Dblclick');
-            },
-        }
-    );   
+    // .on() 第三種類 : 不同事件觸發同一個動作
+    $(".box").on("click mouseenter mouseleave", function(){
+    //do something
+        console.log('click mouseenter mouseleave');
+    });
+  
     </script>
+    
 </body>
 </html>

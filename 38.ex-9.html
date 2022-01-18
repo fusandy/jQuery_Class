@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-9 text size</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .fonts{
+        font-size: 0.8rem;
+    }
+    .fontm{
+        font-size: 1rem;
+    }
+    .fontl{
+        font-size: 1.2rem;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="btn-group">
+                <button class="btn btn-info" id="fonts">S</button>
+                <button class="btn btn-info" id="fontm">M</button>
+                <button class="btn btn-info" id="fontl">L</button>
+                <!-- 按到哪個鈕，新增active標籤 -->
+            </div>
+        </div>
+        <h2>jQuery</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ut inventore officia officiis maiores nisi voluptatibus itaque qui, veritatis illo omnis ullam recusandae, quia vitae quod, nam quam quidem aut?</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae quos voluptatum optio natus placeat totam possimus illo rem accusamus, facilis nulla magnam, temporibus enim? Quod labore non pariatur minima aperiam!</p>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+    
+     $('#fonts').click(function(){
+        $('#fonts').addClass('active').siblings().removeClass('active');
+        $('p').addClass('fonts').siblings().removeClass('fontm').removeClass('fontl');
+     })
+
+     $('#fontm').click(function(){
+        $('#fontm').addClass('active').siblings().removeClass('active');
+        $('p').addClass('fontm').siblings().removeClass('fonts').removeClass('fontl');;
+     })
+
+     $('#fontl').click(function(){
+        $('#fontl').addClass('active').siblings().removeClass('active');
+        $('p').addClass('fontl').siblings().removeClass('fonts').removeClass('fontm');;
+     })
+    </script>
+</body>
+</html>

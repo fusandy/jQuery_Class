@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ex-5 carousel</title>
     <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./fontawesome/css/all.css">
 </head>
 <style>
     .wrap{
@@ -19,7 +20,7 @@
     ul.img-wrap{
         display: flex;
         width: 4000px;
-        transition: 0.5s;
+        transition: 1s;
         transform: translateX(0px);
     }
     /* 圖片與wrap一樣大 */
@@ -44,6 +45,7 @@
         margin: 0 5px;
         border-radius: 2px;        
     }
+
 </style>
 <body>
     <div class="wrap">
@@ -54,6 +56,8 @@
             <li><img src="./imgs/slide4.jpg" alt=""></li>
             <li><img src="./imgs/slide5.jpg" alt=""></li>
         </ul>
+        
+        <!-- 下排的控制bar -->
         <ul class="slider-dots">
             <li></li>
             <li></li>
@@ -68,12 +72,13 @@
     <script>
         // when? who? what?
 
+        // 課堂carousel
         $('.slider-dots li').click(function(){
-            console.log('this:', $(this).index());
+        //     console.log('this:', $(this).index());
             $(this)
             .css('background','rgba(255, 255, 255, 0.836)')
             .siblings()
-            // li的同層其他li元素
+        // li的同層其他li元素
             .css('background','transparent');
 
             // if($(this).index() === 0){
@@ -104,6 +109,12 @@
 
         
         });
+    
+    
+        // 無限carousel
+        
+
+
     </script>
 </body>
 </html>
