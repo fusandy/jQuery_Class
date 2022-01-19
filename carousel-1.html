@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左右按鈕輪播牆</title>
+    <link rel="stylesheet" href="./fontawesome/css/all.css">
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+    <style>
+        .wrap{
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            border: 5px solid #666;
+            border-radius: 2px;
+        }
+        .img-wrap{
+            width: 100%;
+            height: 100vh;
+        }
+        /* 圖片與wrap一樣大 */
+        img{
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+        }
+        img.active{
+            display: inline-block;
+        }
+        ul.slider-dots{
+            position: absolute;
+            bottom: 0;
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .slider-dots li{
+            border: 1px solid rgba(255, 255, 255, 0.836);
+            width: 10px;
+            height: 10px;
+            margin: 0 10px;
+            border-radius: 50%;        
+        }
+        .slider-dots li.active{
+            background-color: rgba(255, 255, 255, 0.836);
+        }
+        .left, .right{
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            /* background: rgba(87, 86, 86, 0.527); */
+            cursor: pointer;
+        }
+        .left{
+            top: 0;
+            left: 0;
+        }
+        .right{
+            top: 0;
+            right: 0;
+        }
+        .fas{
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.836);
+            position: absolute;
+        }
+        .prev{
+            top: 50%;
+            left: 50%;
+        }
+        .next{
+            top: 50%;
+            right: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left">
+            <i class="prev fas fa-chevron-left"></i>    
+        </div>
+        <div class="img-wrap">
+            <img src="./imgs/pic1.jpg" class="active" alt="">
+            <img src="./imgs/pic2.jpg" alt="">
+            <img src="./imgs/pic3.jpg" alt="">
+            <img src="./imgs/pic4.jpg" alt="">
+            <img src="./imgs/pic5.jpg" alt="">
+        </div>
+        <div class="right">
+            <i class="next fas fa-chevron-right"></i>
+        </div>
+
+        <!-- 下排的指示點 -->
+        <ul class="list-unstyled slider-dots">
+            <li class=""></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        
+
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.js"></script>
+    <script>
+    // TODO:: 鈕跟指示點要連動
+    // TODO:: 漸變要設在哪裡?
+
+     $('.next').on('click', function(){
+        console.log('clicked');
+        let currentImg = $('.active');
+        let nextImg = currentImg.next();
+
+        if(nextImg.length>0){
+            currentImg.removeClass('active').css('z-index','-10');
+            nextImg.addClass('active').css('z-index',10);
+        }
+     });
+
+     $('.prev').on('click', function(){
+        console.log('clicked');
+        let currentImg = $('.active');
+        let prevImg = currentImg.prev();
+
+        if(prevImg.length>0){
+            currentImg.removeClass('active').css('z-index','-10');
+            prevImg.addClass('active').css('z-index',10);
+        }
+     });
+    </script>
+</body>
+</html>

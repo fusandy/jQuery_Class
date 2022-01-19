@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .box{
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            padding: 20px 40px;
+            margin: 10px 20px;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        console.log('width:', $('.box').width());
+        console.log('innerWidth:', $('.box').innerWidth());
+        console.log('outerWidth:', $('.box').outerWidth());
+        console.log('outerWidth(true):', $('.box').outerWidth(true));
+    </script>
+    
+</body>
+</html>

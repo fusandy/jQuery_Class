@@ -10,12 +10,16 @@
 <style>
     .color-demo-area{
         height: 400px;
-        background: gray;
+        background-color: gray;
     }
     .color-select-area{
         padding: 10px;
         height: 400px;
-        background: #eee;
+        background-color: #eee;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+        /* justify-content: space-around; */
     }
     .color-circle{
         width: 60px;
@@ -24,31 +28,31 @@
         border-radius: 50%;
         text-align: center;
     }
-    .color-circle:nth-child(1) {
+    /* .color-circle:nth-child(1) {
       background-color: lightskyblue;
     }
 
     .color-circle:nth-child(2) {
       background-color: lightsalmon;
-    } 
+    }  */
 </style>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <div class="color-demo-area"></div>
+                <div class="color-demo-area mb-2"></div>
+                <button class="btn btn-light" id="clear">clear</button>
             </div>
             <div class="col-6">
-                <div class="color-select-area d-flex flex-wrap">
+                <div class="color-select-area mb-2">
                     <!-- <div class="color-circle mx-1 my-1"></div>
                     <div class="color-circle mx-1 my-1"></div> -->
                 </div>
+                <button class="btn btn-light" id="reset">reset</button>
+                <button class="btn btn-light" id="add">add</button>
+                <button class="btn btn-light" id="delete">delete</button>
             </div>
         </div>
-        <button class="btn btn-light" id="reset">reset</button>
-        <button class="btn btn-light" id="clear">clear</button>
-        <button class="btn btn-light" id="add">add</button>
-        <button class="btn btn-light" id="delete">delete</button>
     </div>
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
@@ -64,7 +68,7 @@
     for(i=0; i<16; i++){
         const circle = document.createElement('div');
         circle.className='color-circle';
-        circle.style.background=`hsl(${Math.random()*360},60%,80%)`;
+        circle.style.backgroundColor=`hsl(${Math.random()*360},60%,80%)`;
         $('.color-select-area').append(circle);
     }
 
@@ -72,12 +76,14 @@
         // console.log($(this).index());
         const index = $(this).index() + 1;
         // console.log(index);
-        const color = $(`.color-circle:nth-child(${index})`).css('background');
+        const color = $(`.color-circle:nth-child(${index})`).css('background-color');
         // console.log(color);
-        $('.color-demo-area').css('background',`${color}`);
+        $('.color-demo-area').css('background-color',`${color}`);
         // const color = $(`.color-circle:nth-child(${(this).index()})`).css('background');
         
     })
+    // TODO: 圈圈再點一次顏色展示取消
+    // TODO: 在click之後判斷顏色有沒有一樣，一樣做什麼事 / 不一樣做什麼事
 
     $('#reset').click(function(){
         location.href = '39.ex-10.html';

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset</title>
+    <style>
+        .block{
+            width: 100%;
+            height: 800px;
+            outline: 2px solid pink;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            background: lightskyblue;
+            transition: 2s;
+            opacity: 1;
+        }
+        .box.leave {
+            transform: translateX(-500px);
+            /* transform: translateY(100px); */
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="block"></div>
+    <div class="box leave"></div>
+    <div class="block"></div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+    //  console.log($('.box').offset());
+    //  console.log($('.box').offset().left);
+    //  console.log($('.box').offset().top);
+
+    // TODO:: 捲軸繼續往下，box會消失
+     $(window).scroll(function(){
+        // console.log('卷軸Y位置:',$(window).scrollTop());
+        // console.log('box的Y座標:',$('.box').offset().top);
+        // console.log('螢幕高:',$(window).height());
+        
+        // 上課基礎
+        // if ($(window).scrollTop() >= $('.box').offset().top - $(window).height()/2){
+        //     $(".box").removeClass("leave");
+        // }else{
+        //     $(".box").addClass("leave");
+        // }
+
+        // 進階: 設定leave的最大值與最小值
+        const top = $('.box').offset().top - $(window).height()/2;
+        const bottom = $('.box').offset().top;
+        const scrollTop = $(window).scrollTop();
+
+        if(scrollTop >= bottom || scrollTop < top){
+            $(".box").addClass("leave");
+        }else{
+            $(".box").removeClass("leave");
+        }
+     })
+    </script>
+</body>
+</html>

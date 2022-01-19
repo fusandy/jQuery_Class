@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ex-5 carousel</title>
+    <title>自動輪播牆</title>
     <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./fontawesome/css/all.css">
-</head>
     <style>
-        .wrap{
+        .slideShow{
             max-width: 800px;
             height: 500px;
             overflow: hidden;
@@ -46,8 +44,9 @@
             border-radius: 2px;        
         }
     </style>
+</head>
 <body>
-    <div class="wrap">
+    <div class="slideShow">
         <ul class="list-unstyled img-wrap">
             <li><img src="./imgs/slide1.jpg" alt=""></li>
             <li><img src="./imgs/slide2.jpg" alt=""></li>
@@ -56,60 +55,27 @@
             <li><img src="./imgs/slide5.jpg" alt=""></li>
         </ul>
         <!-- 下排的控制bar -->
-        <ul class="slider-dots">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <div class="showNav">
+            <ul class="slider-dots">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
     </div>
+
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
-
+    
     <script>
-        // when? who? what?
-
-        // 課堂carousel
-        $('.slider-dots li').click(function(){
-        //     console.log('this:', $(this).index());
-            $(this)
-            .css('background','rgba(255, 255, 255, 0.836)')
-            .siblings()
-        // li的同層其他li元素
-            .css('background','transparent');
-
-            // if($(this).index() === 0){
-            // $('.img-wrap').css('transform','translateX(0px)');
-            // }
-
-            // if($(this).index() === 1){
-            //     $('.img-wrap').css('transform','translateX(-800px)');
-            // }
-
-            // if($(this).index() === 2){
-            //     $('.img-wrap').css('transform','translateX(-1600px)');
-            // }
-
-            // if($(this).index() === 3){
-            //     $('.img-wrap').css('transform','translateX(-2400px)');
-            // }
-
-            // if($(this).index() === 4){
-            //     $('.img-wrap').css('transform','translateX(-3200px)');
-            // }
-            
-
-            // 上述五個if判斷式用一個變數公式，即可簡化程式碼
-            // 若要在字串中插入${變數}，字串要改用backtick
-            const moveX = $(this).index() * -800;
-            $('ul.img-wrap').css('transform',`translateX(${moveX}px)`);
-
-        
-        });
-   
-
-
+    // https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/272092/ 
+    
+    let imgWrap = $('.img-wrap');
+    ul = imgWrap.find('ul')
+    
+    
     </script>
 </body>
 </html>

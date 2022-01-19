@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-11</title>
+    <style>
+        body {
+          margin: 0;
+          height: 300vh;
+        }
+        .box {
+          height: calc(100vh - 50px);
+          /* scrollbar還沒捲動時，將nav置底 */
+        }
+        .nav {
+          height: 50px;
+          outline: 1px solid red;
+        }
+        nav.fixed {
+          position: fixed;
+          top: 0;
+          /* width: 100%; */
+          left: 0;
+          right: 0;
+        }
+      </style>
+</head>
+<body>
+    <div class="box"></div>
+    <nav class="nav">I'm nav</nav>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        
+        // 用全域變數紀錄$('.nav').offset().top的初始位置
+        const navTop = $('.nav').offset().top;
+
+        $(window).scroll(function(){
+            console.log('$(window).scrollTop()', $(window).scrollTop());
+            console.log("$('.nav').offset().top", $('.nav').offset().top);
+
+            if($(window).scrollTop() >= navTop){
+                $('.nav').addClass('fixed');
+                // 一旦fixed後，scrollTop = offset.top，永遠就會是true，nav就會一直被釘在最上面
+            }else{
+                $('.nav').removeClass('fixed');
+            }
+        })
+    
+    </script>
+</body>
+</html>

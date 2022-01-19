@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animate css</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <button class="bounce">bounce</button>
+    <div class="box animate__animated"></div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // 只能執行一次
+        // $('.bounce').click(function(){
+        //     $('.box').addClass('animate__bounce');
+        // })
+        
+
+        $('.bounce').click(function(){
+            // 利用變數存動畫名稱
+            let animate='animate__'+$(this).text();
+
+            // bounce點擊，box先加animate，只執行一次，動畫結束後，box移除animate
+            $(".box").addClass(animate).one('animationend',function(){
+            $(this).removeClass(animate);
+            });
+
+            // 確保各版本的瀏覽器都可以支援
+            // $(".box").addClass(animate).on(
+            //     'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+            //     $(this).removeClass(animate);
+            // });
+        })
+        
+
+
+    </script>
+</body>
+</html>
