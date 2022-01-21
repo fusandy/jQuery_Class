@@ -25,7 +25,7 @@
             display: none;
             width: 100%;
             height: 100%;
-            object-fit:fill;
+            object-fit:cover;
         }
         img.active{
             display: inline-block;
@@ -46,7 +46,7 @@
             margin: 0 10px;
             border-radius: 50%;        
         }
-        .slider-dots li.active{
+        .dots{
             background-color: rgba(255, 255, 255, 0.836);
         }
         .left, .right{
@@ -97,7 +97,7 @@
 
         <!-- 下排的指示點 -->
         <ul class="list-unstyled slider-dots">
-            <li class=""></li>
+            <li class="dots"></li>
             <li></li>
             <li></li>
             <li></li>
@@ -114,23 +114,43 @@
 
      $('.next').on('click', function(){
         console.log('clicked');
+        console.log($('img').has('.active'));
+
         let currentImg = $('.active');
         let nextImg = currentImg.next();
-
+        let currentDot = $('.dots');
+        let nextDot = currentDot.next();
+        
         if(nextImg.length>0){
             currentImg.removeClass('active').css('z-index','-10');
             nextImg.addClass('active').css('z-index',10);
+            currentDot.removeClass('dots');
+            nextDot.addClass('dots');
+        }else{
+            //TODO:: 再按一次跳回第一張
+            // currentImg.removeClass('active').css('z-index','-10');
+            // $('.img-wrap:first-child').addClass('active').css('z-index',10);
         }
+        // currentImg = $('img').has('.active');
      });
+
+
 
      $('.prev').on('click', function(){
         console.log('clicked');
+
         let currentImg = $('.active');
         let prevImg = currentImg.prev();
+        let currentDot = $('.dots');
+        let prevDot = currentDot.prev();
 
         if(prevImg.length>0){
             currentImg.removeClass('active').css('z-index','-10');
             prevImg.addClass('active').css('z-index',10);
+            currentDot.removeClass('dots');
+            prevDot.addClass('dots');
+
+        // currentImg = $('img').has('.active');
         }
      });
     </script>

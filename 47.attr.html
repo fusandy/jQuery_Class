@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute</title>
+</head>
+<body>
+    <img class="pic1" src="./imgs/winne.jpg" alt="">
+    <img class="pic2" src="" alt="">
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // console pic1 的 attr('src')
+        console.log('src:', $('.pic1').attr('src'));
+        // 設定 pic2 的 attr('src')
+        $('.pic2').attr('src','./imgs/piglet.png');
+    </script>
+</body>
+</html>

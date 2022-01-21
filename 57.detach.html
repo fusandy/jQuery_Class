@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <button class="btn btn-info">detach</button>
+        <div class="container">
+        <div class="row flex-column">
+            <div class="hello">Hello World</div>
+            <div class="hello hello1">Hello World1</div>
+            <div class="hello2">Hello World2</div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // 初始設定: 自定義變數沒做過detach
+        let isDetached = false;
+        // 初始設定: myContent是空值
+        let myContent = null;
+        let index = 0;
+
+        $(".btn").click(function () {
+
+            // 第一次按按鈕，會進到false，isDetached由false改成true
+            // 第二次再按按鈕，進到true，isDetached由true改成false
+
+            if (isDetached) {
+                isDetached = false;
+                // 把myContent貼回去HTML中
+                $('.row').append(myContent);
+            }
+            else {
+                isDetached = true;
+                // 剪下 $(".row div") 放進myContent變數中
+                myContent = $(".row div").detach();
+            }
+        });
+   
+    </script>
+</body>
+</html>

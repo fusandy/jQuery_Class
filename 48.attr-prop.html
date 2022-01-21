@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attr prop</title>
+</head>
+<body>
+    <!-- <button id="getAttr">get attr</button>
+    <button id="rmAttr">remove attr</button>
+    <button id="setAttr">set attr</button> -->
+
+
+    <button id="getProp">get prop</button>
+    <button id="setProp">set prop</button>
+    <button id="rmProp">remove prop</button>
+
+    <input type="checkbox" id="checkbtn" checked>
+
+
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // attr 屬性
+        $('#getAttr').click(function(){
+            console.log("attr('checked'):",$('#checkbtn').attr('checked'));
+        })
+
+        $('#rmAttr').click(function(){
+            $('#checkbtn').removeAttr('checked');
+        })
+
+        $('#setAttr').click(function(){
+            $('#checkbtn').attr('checked',true);
+        })
+
+        // attr拿其他屬性
+        // $('#getAttr').click(function(){
+        //     console.log("attr('type'):",$('#checkbtn').attr('type'));
+        // })
+        // $('#getAttr').click(function(){
+        //     console.log("attr('id'):",$('#checkbtn').attr('id'));
+        // })
+
+        // prop 狀態
+        $('#getProp').click(function(){
+            console.log('prop(checked):', $('#checkbtn').prop('checked'));
+        })
+        $('#rmProp').click(function(){
+            $('#checkbtn').removeProp('checked');
+        })
+        $('#setProp').click(function(){
+            $('#checkbtn').Prop('checked');
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data attribute</title>
+    <!-- <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css"> -->
+    <style>
+        .box {
+          width: 200px;
+          height: 200px;
+        }
+      </style>
+</head>
+<body>
+    <!-- 亂數產生的資料可以用data- 存起來 -->
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+
+    <button  class="btn btn-primary"  type="button"  data-toggle="collapse"  data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent"  aria-expanded="false"  aria-label="Toggle navigation">
+      click
+    </button>
+    <div class="box autobg"></div>
+
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <!-- <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script> -->
+    
+    <script>
+
+    // .data("名稱", "欲改變的值")
+    //  $('button').click(function(){
+    //      console.log('data-toggle:', $(this).data('toggle'));
+    //      console.log('data-target:', $(this).data('target'));
+    //  })
+
+    //亂數產生背影漸層顏色
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+    }
+
+    function getRBGA() {
+        return `linear-gradient(135deg, rgba(${getRandomInt(
+          256
+        )},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(
+          256
+        )},${getRandomInt(256)},${getRandomInt(256)},.8)`;
+    }
+
+    const elements = document.querySelectorAll(".autobg");
+    Array.from(elements).forEach((element, index) => {
+        element.style.backgroundImage = getRBGA();
+    });
+
+
+    
+    $("button").click(function () {
+        
+        // 第一次點的時候，box沒有data-bg，答案是undefined
+        console.log($(".box").data("bg"));
+
+        
+        // 第二次點，data-bg已經存在，會進到true
+        if ($(".box").data("bg")) {
+            // 讀取第一次進入畫面的顏色，存在oldBg變數中
+            const oldBg = $(".box").data("bg");
+            // 將第二個顏色存在bg變數中
+            const bg = $(".box").css("background-image");
+            
+            $(".box").css("background-image", oldBg);
+            $(".box").data("bg", bg);
+        } else {
+            // 如果bg-data是undefined
+            // 把第一次進入畫面的顏色存在bg變數中
+            const bg = $(".box").css("background-image");
+            console.log(bg);
+            // 將進入畫面的顏色存到 data-bg 裡
+            $(".box").data("bg", bg);
+            // 產生一個新的顏色
+            $(".box").css("background-image", getRBGA());
+        }
+    
+    });
+
+    </script>
+</body>
+</html>

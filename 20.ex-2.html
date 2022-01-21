@@ -28,12 +28,13 @@
             box.innerHTML='box'+(i+1);
             box.style.width='200px';
             box.style.height='100px';
-            box.style.backgroundColor=`hsl(${Math.random()*360},60%,70%)`;
+            box.style.backgroundColor=`hsl(${Math.random()*360},60%,85%)`;
             container.append(box);
         }
     
         $('.box').click(function(){
-            $(this).css('background','gray').css('color','white');
+            $(this).css('background','gray').css('color','white')
+            .nextAll().css('background','gray').css('color','white');
         })
 
     </script>

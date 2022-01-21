@@ -64,13 +64,21 @@
     <script>
      $('input').change(function(){
         //  console.log('this:',$(this));
+        console.log('checked or not:',$(this).prop('checked'));
+
         if($(this).prop('checked')){
             $(this).closest('tr').css('background','lightblue');
         }else{
-            $(this).closest('tr').css('background','none');
+            $(this).closest('tr').css('background','transparent');
         }
      })
-     
+
+     // 老師另個解法 : 完全不判斷 prop true or false
+     // 反向思考 : 先把所有人都變成透明背景，有checked的加上顏色
+    //  $('input').click(function(){
+    //     $(this).closest('tr').css('background','transparent');
+    //     $('input:checked').closest('tr').css('background','lightblue')
+    //  })
     </script>
 </body>
 </html>
