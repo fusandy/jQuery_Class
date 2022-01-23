@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex-5 carousel infinite</title>
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./fontawesome/css/all.css">
+</head>
+    <style>
+        .wrap{
+            max-width: 800px;
+            height: 500px;
+            overflow: hidden;
+            margin: 20px auto;
+            position: relative;
+        }
+        /* 火車頭 */
+        ul.img-wrap{
+            display: flex;
+            width: 4800px;
+            transition: 1s;
+            transform: translateX(0px);
+        }
+        /* 圖片與wrap一樣大 */
+        li img{
+            width: 100%;
+            height: 100%;
+            object-fit:cover;
+        }
+        ul.slider-dots{
+            position: absolute;
+            bottom: 0;
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .slider-dots li{
+            border: 1px solid rgba(255, 255, 255, 0.836);
+            width: 40px;
+            height: 5px;
+            margin: 0 5px;
+            border-radius: 2px;        
+        }
+        .left, .right{
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            background: rgba(87, 86, 86, 0.527);
+            cursor: pointer;
+        }
+        .left{
+            top: 0;
+            left: 0;
+        }
+        .right{
+            top: 0;
+            right: 0;
+        }
+        .fas{
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.836);
+            position: absolute;
+        }
+        .prev{
+            top: 50%;
+            left: 50%;
+        }
+        .next{
+            top: 50%;
+            right: 50%;
+        }
+    </style>
+<body>
+    <div class="wrap">
+        <ul class="list-unstyled img-wrap">
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+            <li><img src="./imgs/slide2.jpg" alt=""></li>
+            <li><img src="./imgs/slide3.jpg" alt=""></li>
+            <li><img src="./imgs/slide4.jpg" alt=""></li>
+            <li><img src="./imgs/slide5.jpg" alt=""></li>
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+        </ul>
+        <div class="left">
+            <i class="prev fas fa-chevron-left"></i>    
+        </div>
+        <div class="right">
+            <i class="next fas fa-chevron-right"></i>
+        </div>
+        <!-- 下排的控制bar -->
+        <ul class="slider-dots">
+            <li style="background: rgba(255, 255, 255, 0.836);"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+        // 邏輯: 第六張放一張假圖，當自動輪播跑到第六張的時候，瞬間調整火車頭位置回到起始點
+        let page = 0;
+        let myInterval = null;
+
+        // click button
+        $('.slider-dots li').click(function(){
+        //     console.log('this:', $(this).index());
+        // clicked的時候，page要更新，這樣自動輪播的頁數才會順著繼續走
+            page = $(this).index();
+            $(this)
+            .css('background','rgba(255, 255, 255, 0.836)')
+            .siblings()
+            .css('background','transparent');
+
+            const moveX = $(this).index() * -800;
+            $('ul.img-wrap').css('transform',`translateX(${moveX}px)`);
+        });
+   
+        // Right Button
+        $('.right').click(function(){
+            console.log('right clicked');
+
+            page ++ ;
+            console.log('page:', page)
+
+            if (page>4){
+                page = 0;
+            };
+            console.log('new page:', page)
+
+            const moveX = page * -800;
+            $('ul.img-wrap').css('transform',`translateX(${moveX}px)`);
+
+            $('.slider-dots li').eq(page)
+            .css('background','rgba(255, 255, 255, 0.836)')
+            .siblings()
+            .css('background','transparent');
+        });
+
+        // Left Button
+        $('.left').click(function(){    
+            console.log('left clicked');
+            
+            page --;
+            console.log('page',page)
+
+            if(page<0){
+                page = 4
+            }
+            console.log('new page',page);
+            
+            const moveLeft = page*-800;
+            $('ul.img-wrap').css('transform',`translateX(${moveLeft}px)`);
+            $('.slider-dots li').eq(page)
+                .css('background','rgba(255, 255, 255, 0.836)')
+                .siblings()
+                .css('background','transparent');
+
+        })
+
+        // Auto play
+        function startInterval(){
+            myInterval = setInterval(() => {
+            
+            page ++ ;
+            console.log('page:', page)
+
+            // if (page>= 5){
+            //     page = 0;
+            // };
+            console.log('new page:', page)
+
+            // 要等圖片滑完，transitionend的時候，才能歸零
+            const moveX = page * -800;
+            $('ul.img-wrap').css('transition','1s').css('transform',`translateX(${moveX}px)`);
+
+            // 指示點歸零
+            $('.slider-dots li').eq((page === 5)?0:page)
+            .css('background','rgba(255, 255, 255, 0.836)')
+            .siblings()
+            .css('background','transparent');
+
+            },1500);
+        }
+        
+        // 偵聽火車頭，確定transitionend的時候
+        $('ul.img-wrap').on('transitionend',function(){
+            console.log('transitionend');
+            // 當page
+            if (page >= 5){
+                $('ul.img-wrap').css('transition','none')
+                .css('transform',`translateX(0px)`);
+                page = 0;
+            }
+        })
+
+
+        startInterval();
+
+        // hover的時候，carousel要停，hover離開的時候再次啟動setInterval
+        $('.wrap').hover(function(){
+            clearInterval(myInterval);
+        },function(){
+            startInterval();
+        })
+
+    </script>
+</body>
+</html>
