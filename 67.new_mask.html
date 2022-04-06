@@ -5,52 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ex-14 using map</title>
-    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="./fontawesome/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./bootstrap-4.2.1-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./fontawesome/css/all.css" />
     <style>
-        .card img{
-            width: 100%;
-            object-fit: cover;
-            overflow: hidden;
-        }
-        h6{
-           font-weight: bold; 
-        }
-        .price{
-            color: red;
-        }
-        #saved-position{
-            width: fit-content;
-            margin-left: auto;
-            margin-right: 5%;
-        }
+      .card img {
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+      h6 {
+        font-weight: bold;
+      }
+      .price {
+        color: red;
+      }
+      #saved-position {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 5%;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- SPA single page application -->
     <div id="root"></div>
-
 
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
     <script>
-        $.ajax({
-            method: "GET",
-            url: "./datas/mask.json",
-            // dataType: "json",
-        }).done(function (result) {
-            console.log(result);
-            // 拿到資料後，呼叫function跑迴圈
-            render(result);
-        });
+      $.ajax({
+        method: "GET",
+        url: "./datas/mask.json",
+        // dataType: "json",
+      }).done(function (result) {
+        console.log(result);
+        // 拿到資料後，呼叫function跑迴圈
+        render(result);
+      });
 
-        // .js
-        function render(data){
-
-            // JSX
-            const cards = data.map(element => {
-            // 每一次的element是一個物件，return塞入資料後的字串回傳給變數cards
-            return `<div class="mt-2 col-12 col-sm-6 col-lg-3">
+      // .js
+      function render(data) {
+        // JSX
+        const cards = data.map((element) => {
+          // 每一次的element是一個物件，return塞入資料後的字串回傳給變數cards
+          return `<div class="mt-2 col-12 col-sm-6 col-lg-3">
                 <div class="card">
                     <img src="./imgs/${element.image}" alt="" />
                     <div class="card-body">
@@ -64,11 +72,11 @@
                         </div>
                     </div>
                 </div>
-            </div>`
-            });
+            </div>`;
+        });
 
-            // 飛動的愛心
-            document.getElementById('root').innerHTML = `
+        // 飛動的愛心
+        document.getElementById("root").innerHTML = `
                 <nav>
                     <p id="saved-position"><i class="fas fa-envelope-open"></i></p>
                 </nav>
@@ -77,44 +85,53 @@
                         ${cards.join("")}
                     </div>
                 </div>`;
-                // map的結果是陣列會有逗號在html畫面上，可以改用join('空字串')暫時解決畫面問題
-        }
+        // map的結果是陣列會有逗號在html畫面上，可以改用join('空字串')暫時解決畫面問題
+      }
 
-        $('#root').on('click','.heart',function(){
-            console.log('heart clicked');
-            const btn = $(this);
-            const btnPosition = btn.offset();
-            console.log(btnPosition);
-            const envelopePosition = $('#saved-position').offset();
-            console.log(envelopePosition);
+      $("#root").on("click", ".heart", function () {
+        console.log("heart clicked");
+        const btn = $(this);
+        const btnPosition = btn.offset();
+        console.log(btnPosition);
+        const envelopePosition = $("#saved-position").offset();
+        console.log(envelopePosition);
 
-            $('body').append('<div class="fly-heart"><i class="fas fa-heart"></i></div>');
-            $('.fly-heart').css({
-                color:'red',
-                width:btn.outerWidth(),
-                height:btn.outerHeight(),
-                position:'absolute',
-                top:btnPosition.top+'px',
-                left:btnPosition.left+'px',
-                display:'flex',
-                justifyContent:'center',
-                alignItems:'center',
-            });
+        $("body").append(
+          '<div class="fly-heart"><i class="fas fa-heart"></i></div>'
+        );
+        $(".fly-heart").css({
+          color: "red",
+          width: btn.outerWidth(),
+          height: btn.outerHeight(),
+          position: "absolute",
+          top: btnPosition.top + "px",
+          left: btnPosition.left + "px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        });
 
-            $('.fly-heart').animate({
-                top:envelopePosition.top + 20 + 'px',
-                left:envelopePosition.left - 10 + 'px',
-                opacity:0.5,
-            },1000).animate({
-                top:envelopePosition.top + 'px',
-                left:envelopePosition.left - 10 + 'px',
-                opacity:0,
-            },500,function(){
-                $('.fly-heart').remove();
-            });
-        })
-
-        
+        $(".fly-heart")
+          .animate(
+            {
+              top: envelopePosition.top + 20 + "px",
+              left: envelopePosition.left - 10 + "px",
+              opacity: 0.5,
+            },
+            1000
+          )
+          .animate(
+            {
+              top: envelopePosition.top + "px",
+              left: envelopePosition.left - 10 + "px",
+              opacity: 0,
+            },
+            500,
+            function () {
+              $(".fly-heart").remove();
+            }
+          );
+      });
     </script>
   </body>
 </html>
